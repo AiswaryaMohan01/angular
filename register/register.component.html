@@ -1,0 +1,78 @@
+<form [formGroup]="registerForm"  (ngSubmit)="registerSubmited()"  class="border p-3 round-3" style=" width: 50vw; margin-left : 20vw;">
+    <div class="row g-0">
+      <div class="col text-center p-2 mb-3 bg-light" >  
+        <span class="fs-2">DOCTOR'S REGISTRATION PAGE</span>
+    </div>
+    </div>
+    <div class="row  p-2 mb-1">
+        <div class="col">
+            <label for="firstname" class="form-label"> First Name</label>
+            <input type="text" class="form-control " id="firstname" formControlName="firstname">
+            <div class="from-text text-danger" *ngIf="Firstname.errors?.['required'] && (Firstname.touched ||Firstname.dirty)">
+             First name is required
+            </div>
+            <div class="from-text text-danger"  *ngIf="Firstname.errors?.['minlength']">First name is too short</div>
+            </div>
+            <div class="from-text text-danger" *ngIf="Firstname.errors?.['pattern'] &&( Firstname.touched ||Firstname.dirty)">
+            First name should start with an alphabet</div>
+<div class="col">
+<label for="lastname" class="form-label">Last Name</label>
+<input type="text" class="form-control" id="lastname" formControlName="lastname">
+<div class="from-text text-danger" *ngIf="lastname.errors?.['required'] && (lastname.touched ||lastname.dirty)">
+    This field is required
+</div>
+<div class="from-text text-danger"  *ngIf="lastname.errors?.['minlength']"></div>
+<div class="from-text text-danger" *ngIf="lastname.errors?.['pattern'] &&( lastname.touched ||lastname.dirty)">
+Last name should start with an alphabet</div>
+</div>
+</div>
+<div class="row  p-2 mb-2" >
+    <div class="col">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" formControlName="email">
+        <div class="from text  text-danger" *ngIf="email.errors?.['email'] && ( email.dirty  ||email.touched)">Invalid email id</div>
+        <div class="from text  text-danger" *ngIf="email.errors?.['required'] && ( email.touched ||email.dirty)">This field is required</div>
+    </div>
+</div>
+<div class="row  p-2 mb-2">
+    <div class="col mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="integer" class="form-control" id="phone" formControlName="phone" pattern="[6789][0-9]{9}" title="Please enter valid phone number">
+        <div class="from text text-danger" *ngIf="phone.errors?.['pattern']" >Number is invalid</div>
+        <div class="from text text-danger" *ngIf="phone.errors?.['maxlength']" >Enter a valid number</div>
+    </div>
+</div>
+<div class="row" p-2 mb-2>
+    <div class="col mb-3">
+          <label for="mci" class="form-label">MCI</label>
+          <input type="integer" class="form-control" id="mci" formControlName="mci">
+          <div class="from text text-danger" *ngIf="mci.errors?.['pattern']">Enter a valid MCI</div>
+    </div>
+</div>
+ <!-- <div class="row" p-2 mb-2>
+        <div class="col">
+           <label for="password"  class="form-label">Password</label>
+           <input type="password" class="form-control" id="password" formControlName="password">
+           <div class="from-text text-danger" *ngIf="password.errors?.['required'] && (password.dirty || password.touched)">
+           password is required </div>
+        <div class="from-text text-danger"  *ngIf="password.errors?.['minlength']||password.errors?.['maxlength']  && (password.touched  || password.dirty)">
+          password should be atleast 6 and the maximum  15 charachters long</div>
+        </div>
+        <div class="col">
+           <label for="conformpassword"  class="form-label"> repeat password</label><br>
+           <input type="password" class="form-control" id="conformpassword" formControlName="conformpassword">
+           <div class="from-text text-danger" [ngStyle]="{'display':repeatpass}">
+            password is incorrect</div>
+           </div>
+        </div> -->
+<div class="row">
+    <div class="col-6 offset-5">
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary"  Style="width: 100px; margin-bottom: 10px;">Submit</button>
+            <button type="submit" class="btn btn-primary" Style="width: 100px;">Cancel</button>
+          </div>
+    </div>
+  </div>
+
+</form>
+ 
